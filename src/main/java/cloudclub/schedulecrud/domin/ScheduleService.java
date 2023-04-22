@@ -1,5 +1,9 @@
 package cloudclub.schedulecrud.domin;
 
+import cloudclub.schedulecrud.domin.dto.ScheduleDayDto;
+import cloudclub.schedulecrud.domin.dto.ScheduleDto;
+import cloudclub.schedulecrud.domin.dto.ScheduleMonthDayReq;
+import cloudclub.schedulecrud.domin.dto.ScheduleReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +22,14 @@ public class ScheduleService {
                 .collect(Collectors.toList());
     }
 
-    public void save(ScheduleReq request) {
+    public List<ScheduleDayDto> findDay(ScheduleMonthDayReq req) {
+        return scheduleRepository.findByDay(req.getMonth(), req.getDay())
+                .stream()
+                .map(ScheduleDayDto::of)
+                .collect(Collectors.toList());
+    }
 
+    public void save(ScheduleReq request) {
         Schedule schedule = Schedule.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
@@ -27,6 +37,12 @@ public class ScheduleService {
                 .remind_date((request.getRemind_date()))
                 .build();
 
+        scheduleRepository.save(schedule);
+    }
+
+    public void remove(Long id) {
+        Schedule schedule = scheduleRepository.findById(id).get();
+        schedule.delete();
         scheduleRepository.save(schedule);
     }
 }
