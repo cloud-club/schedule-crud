@@ -41,6 +41,10 @@ public class Schedule {
         this.content = content;
         this.schedule_date = schedule_date;
         this.remind_date = remind_date;
+        this.isActive = true;
+    }
+
+    public void delete() {
         this.isActive = false;
     }
 
