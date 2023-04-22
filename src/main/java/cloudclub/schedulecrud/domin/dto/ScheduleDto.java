@@ -1,13 +1,12 @@
-package cloudclub.schedulecrud.domin;
+package cloudclub.schedulecrud.domin.dto;
 
+import cloudclub.schedulecrud.domin.Schedule;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor

@@ -1,4 +1,4 @@
-package cloudclub.schedulecrud.domin;
+package cloudclub.schedulecrud.domin.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
