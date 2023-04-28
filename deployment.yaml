@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud
+  template:
+    metadata:
+      labels:
+        app: crud
+    spec:
+      containers:
+        - name: crud
+          # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
+          # Replace $GCLOUD_PROJECT with your project ID.
+          image: us-central1-docker.pkg.dev/cloud-club-slackbot/slackbot/crud:latest
+          # This app listens on port 8080 for web traffic by default.
+          ports:
+            - containerPort: 8080
+---
