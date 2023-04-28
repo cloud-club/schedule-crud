@@ -2,12 +2,9 @@ package cloudclub.schedulecrud.domin;
 
 import cloudclub.schedulecrud.domin.dto.ScheduleDayDto;
 import cloudclub.schedulecrud.domin.dto.ScheduleDto;
-import cloudclub.schedulecrud.domin.dto.ScheduleMonthDayReq;
 import cloudclub.schedulecrud.domin.dto.ScheduleReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -25,15 +22,17 @@ public class ScheduleController {
 
     @GetMapping("api/day")
     public List<ScheduleDayDto> findDay (
-            @RequestBody ScheduleMonthDayReq req
+            @RequestParam int month,
+            @RequestParam int day
     ) throws Exception {
-        return service.findDay(req);
+        return service.findDay(month, day);
     }
 
-    @PostMapping("api/")
+    @PostMapping("api")
     public void save (
             @RequestBody ScheduleReq request
     ) throws Exception {
+        System.out.println(request.getSchedule_date());
         service.save(request);
     }
 

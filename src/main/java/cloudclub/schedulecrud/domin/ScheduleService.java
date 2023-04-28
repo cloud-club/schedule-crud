@@ -22,8 +22,8 @@ public class ScheduleService {
                 .collect(Collectors.toList());
     }
 
-    public List<ScheduleDayDto> findDay(ScheduleMonthDayReq req) {
-        return scheduleRepository.findByDay(req.getMonth(), req.getDay())
+    public List<ScheduleDayDto> findDay(int month, int day) {
+        return scheduleRepository.findByDay(month, day)
                 .stream()
                 .map(ScheduleDayDto::of)
                 .collect(Collectors.toList());
